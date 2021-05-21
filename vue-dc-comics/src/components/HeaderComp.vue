@@ -1,17 +1,23 @@
 <template>
+
   <header>
+
+    <div class="container">
 
     <img src="../assets/img/dc-logo.png" alt="">
 
     <nav>
       <ul>
-        <li v-for="(link, index) in links" :key="index">
+        <li v-for="(link, index) in links" :key="index" :class="{'active': link.current}">
           <a :class="{'active': link.current}" :href="link.url">{{ link.text }}</a>
         </li>
       </ul>
     </nav>
 
+    </div>
+
   </header>
+
 </template>
 
 <script>
@@ -78,23 +84,43 @@ export default {
 
 <style lang="scss" scoped>
 
+@import '../assets/style/utilities.scss';
+
   header{
+    height: 150px;
+    div {
+    display: flex;
+    justify-content: space-between;
     text-align: center;
-    /* margin-bottom: 4rem; */
+    height: 100%;
+    width: 100%;
+    }
+    img {
+      margin: 20px 0;
+    }
   }
   ul{
     display: flex;
     justify-content: center;
-    /* margin: 2rem 0; */
+    line-height: 120px;
+    li {
+      list-style: none;
+      padding: 0 10px;
+      text-transform: uppercase;
+      &:hover,
+      &.active {
+        color: #0280F5;
+        border-bottom: 3px solid #0280F5;
+      }
+    }
     a {
       text-decoration: none;
-      padding: 1rem;
-      transition: background 0.4s;
+      color: black;
+      height: 100%;
       &:hover,
-      &.active{
-        background: red
+      &.active {
+        color: #0280F5;
       }
-      
     }
   }
 
